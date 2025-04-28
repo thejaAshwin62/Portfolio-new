@@ -1,5 +1,10 @@
-import React from "react";
-import IconCloud from "./ui/IconCloud";
+"use client";
+
+import dynamic from "next/dynamic";
+
+const IconCloud = dynamic(() => import("./ui/IconCloud"), {
+  ssr: false,
+});
 
 // Updated slugs array with removed logos
 const slugs = [
@@ -61,4 +66,4 @@ export default function IconCloudDemo() {
       </div>
     </div>
   );
-} 
+}

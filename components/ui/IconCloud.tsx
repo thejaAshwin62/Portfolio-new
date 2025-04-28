@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
 
 function easeOutCubic(t: number): number {
@@ -42,17 +44,26 @@ export default function IconCloud({ images }: IconCloudProps) {
   const [iconPositions, setIconPositions] = useState<IconPosition[]>([]);
   const [rotation, setRotation] = useState<Rotation>({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const [lastMousePos, setLastMousePos] = useState<MousePosition>({ x: 0, y: 0 });
+  const [lastMousePos, setLastMousePos] = useState<MousePosition>({
+    x: 0,
+    y: 0,
+  });
   const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
-  const [targetRotation, setTargetRotation] = useState<TargetRotation | null>(null);
+  const [targetRotation, setTargetRotation] = useState<TargetRotation | null>(
+    null
+  );
   const animationFrameRef = useRef<number>();
   const rotationRef = useRef<Rotation>(rotation);
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([]);
   const imagesLoadedRef = useRef<boolean[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   // Create icon canvases once when images change
   useEffect(() => {
-    if (!images) return;
+    if (!images || typeof window === "undefined") return;
 
     imagesLoadedRef.current = new Array(images.length).fill(false);
 
@@ -283,6 +294,8 @@ export default function IconCloud({ images }: IconCloudProps) {
       }
     };
   }, [iconPositions, isDragging, mousePos, targetRotation]);
+
+  if (!isMounted) return null;
 
   return (
     <canvas
