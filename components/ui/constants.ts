@@ -1,18 +1,20 @@
-import html from "./tech/html.png";
-import css from "./tech/css.png";
-import javascript from "./tech/javascript.png";
-import typescript from "./tech/typescript.png";
-import reactjs from "./tech/reactjs.png";
-import nodejs from "./tech/nodejs.png";
-import threejs from "./tech/threejs.svg";
-import git from "./tech/git.png";
-import tailwind from "./tech/tailwind.png";
-import mongodb from "./tech/mongodb.png";
-import docker from "./tech/docker.png";
-import figma from "./tech/figma.png";
-import redux from "./tech/redux.png";
-import blender from "./tech/blender.png";
-import unity from "./tech/unity.png";
+import html from "@/public/tech/html.png";
+import css from "@/public/tech/css.png";
+import javascript from "@/public/tech/javascript.png";
+import reactjs from "@/public/tech/reactjs.png";
+import nodejs from "@/public/tech/nodejs.png";
+import threejs from "@/public/tech/threejs.svg";
+import git from "@/public/tech/git.png";
+import tailwind from "@/public/tech/tailwind.png";
+import mongodb from "@/public/tech/mongodb.png";
+import docker from "@/public/tech/docker.png";
+import figma from "@/public/tech/figma.png";
+import blender from "@/public/tech/blender.png";
+import unity from "@/public/tech/unity.png";
+import spring from "@/public/tech/spring.png";
+import nextjs from "@/public/tech/nextjs.jpeg";
+import github from "@/public/tech/github.png";
+import aws from "@/public/tech/aws.jpg";
 
 import { StaticImageData } from "next/image";
 
@@ -35,16 +37,28 @@ export const technologies: Technology[] = [
     icon: javascript,
   },
   {
-    name: "TypeScript",
-    icon: typescript,
-  },
-  {
     name: "React JS",
     icon: reactjs,
   },
   {
     name: "Node JS",
     icon: nodejs,
+  },
+  {
+    name: "SpringBoot",
+    icon: spring,
+  },
+  {
+    name: "Next JS",
+    icon: nextjs,
+  },
+  {
+    name:"GitHub",
+    icon: github,
+  },
+  {
+    name: "AWS",
+    icon: aws,
   },
   {
     name: "Three JS",
@@ -71,15 +85,11 @@ export const technologies: Technology[] = [
     icon: figma,
   },
   {
-    name: "Redux",
-    icon: redux,
-  },
-  {
     name: "Blender",
     icon: blender,
   },
   {
     name: "Unity",
     icon: unity,
-  }
-]; 
+  },
+];

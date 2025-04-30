@@ -1,4 +1,6 @@
-import { Suspense } from "react";
+"use client";
+
+import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Decal,
@@ -8,15 +10,30 @@ import {
   useTexture,
 } from "@react-three/drei";
 import { StaticImageData } from "next/image";
-
 import CanvasLoader from "./Loader";
+import * as THREE from "three";
 
 interface BallCanvasProps {
   icon: StaticImageData;
 }
 
 const Ball = ({ icon }: BallCanvasProps) => {
-  const [decal] = useTexture([icon.src]);
+  // Create a texture loader and set its crossOrigin
+  const textureLoader = new THREE.TextureLoader();
+  textureLoader.crossOrigin = "anonymous";
+
+  const [decal] = useTexture([icon.src], (loader) => {
+    // Set crossOrigin on the loader
+    if (loader instanceof THREE.TextureLoader) {
+      loader.crossOrigin = "anonymous";
+    }
+  });
+
+  useEffect(() => {
+    if (decal) {
+      decal.anisotropy = 16;
+    }
+  }, [decal]);
 
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
@@ -42,6 +59,16 @@ const Ball = ({ icon }: BallCanvasProps) => {
 };
 
 const BallCanvas = ({ icon }: BallCanvasProps) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <Canvas
       frameloop="demand"
