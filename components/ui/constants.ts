@@ -3,7 +3,6 @@ import css from "@/public/tech/css.png";
 import javascript from "@/public/tech/javascript.png";
 import reactjs from "@/public/tech/reactjs.png";
 import nodejs from "@/public/tech/nodejs.png";
-import threejs from "@/public/tech/threejs.svg";
 import git from "@/public/tech/git.png";
 import tailwind from "@/public/tech/tailwind.png";
 import mongodb from "@/public/tech/mongodb.png";
@@ -24,10 +23,10 @@ interface Technology {
 }
 
 export const technologies: Technology[] = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
+  // {
+  //   name: "HTML 5",
+  //   icon: html,
+  // },
   {
     name: "CSS 3",
     icon: css,
@@ -59,10 +58,6 @@ export const technologies: Technology[] = [
   {
     name: "AWS",
     icon: aws,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
   },
   {
     name: "Git",
